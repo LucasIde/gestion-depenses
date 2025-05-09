@@ -8,6 +8,7 @@ const rubric = document.getElementById("catégorie");
 const btn = document.querySelector(".add");
 const resume = document.querySelector(".résumer");
 const tot = document.querySelector(".total");
+const date = document.querySelector(".date");
 
 // ==============================
 // 🌍 Variables globales
@@ -19,27 +20,34 @@ const tab = [];
 // 🎊 Fonctionnalités
 // ==============================
 
-function printEmpty() {
-	resume.innerHTML = "Aucune dépense enregistrée.";
-};
-
-function clear_form() {
-	description.value = "";
-	amount.value = "";
-	rubric.value = "";
+function find_emoji(txt_rubric) {
+	console.log(txt_rubric)
+	switch (txt_rubric) {
+		case "alimentation":
+			return ("🍕");
+		case "logement":
+			return ("🔑");
+		case "transport":
+			return ("🚅");
+		case "divertissement":
+			return ("✨");
+		default :
+		return ("?");
+	}
 };
 
 function create_tab() {
-	let tmp = [description.value, amount.value, rubric.value]
+	let tmp = [rubric.value, description.value, amount.value, date.value]
 	tab.push(tmp);
-	return (`${description.value} - ${amount.value}€ - ${rubric.value}`);
+	const emoji = find_emoji(rubric.value);
+	return (`${emoji} - ${description.value} - ${amount.value}€ - ${date.value}`);
 };
 
 // add element in html
 
 function add_resume(txt, index) {
 	let div = document.createElement("div");
-	div.innerHTML = `${txt} <button class="delete">delete</button>`;
+	div.innerHTML = `${txt} <button class="delete">❌</button>`;
 	div.setAttribute("data-index", index);
 	resume.appendChild(div);
 };
@@ -50,7 +58,8 @@ function reorganize_index() {
 	resume.innerHTML = "";
 	let i = 0;
 	tab.forEach((x) => {
-		add_resume(`${x[0]} - ${x[1]}€ - ${x[2]}`, i++);
+		const emoji = find_emoji(x[0])
+		add_resume(`${emoji} - ${x[1]} - ${x[2]}€ - ${x[3]}`, i++);
 	});
 };
 
@@ -58,10 +67,21 @@ function add_tot() {
 	let total = 0;
 	if (tab.length != 0) {
 		tab.forEach((x) => {
-			total += (Number)(x[1]);
+			total += (Number)(x[2]);
 		});
 	}
 	tot.innerHTML = `Total: ${total} €`;
+};
+
+function printEmpty() {
+	resume.innerHTML = "Aucune dépense enregistrée.";
+};
+
+function clear_form() {
+	description.value = "";
+	amount.value = "";
+	rubric.value = "";
+	date.value = "";
 };
 
 // ==============================
@@ -75,7 +95,7 @@ add_tot();
 
 btn.addEventListener("click", function(e) {
 	e.preventDefault();
-	if (description.value && amount.value && rubric.value && amount.value >= 0) {
+	if (description.value && amount.value && rubric.value && date.value && amount.value >= 0) {
 		if (tab.length == 0) {
 			resume.innerHTML = '';
 		}
