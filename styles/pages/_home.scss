@@ -35,17 +35,25 @@ form {
 
 .résumer {
 	margin: 1rem auto;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
 	width: 50%;
 	padding: 2rem;
 	background-color: aquamarine;
+	gap: 1rem;
+}
+
+.wrapper{
 	& > div {
 		display: flex;
 		width: 100%;
-		justify-content: space-between;
+		flex-direction: column;
+		& > div {
+			display: flex;
+			justify-content: space-between;
+		}
 	}
+
 	.delete {
 		background-color: aquamarine;
 		border: none;
@@ -56,4 +64,16 @@ form {
 .total {
 	text-align: center;
 	font-size: 3rem;
+}
+
+.empty {
+	display: flex;
+	justify-content: center;
+	background-color: brown;
+	width: 50%;
+	margin:  1rem auto;
+}
+
+h2 {
+	border-bottom: solid 1px;
 }
