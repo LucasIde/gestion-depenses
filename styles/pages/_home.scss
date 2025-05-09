@@ -1,0 +1,45 @@
+h1 {
+	text-align: center;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+}
+
+.form-content {
+	background-color: dimgray;
+	display: flex;
+	flex-direction: column;
+	width: 50%;
+	padding: 1rem;
+	span {
+		font-size: 1.4rem;
+	}
+	input, select, button {
+		padding: 10px;
+	}
+	button {
+		color: #fff;
+		background-color: brown;
+		border: none;
+		cursor: pointer;
+	}
+}
+
+.résumer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	& > div {
+		display: flex;
+		width: 50%;
+		justify-content: space-between;
+	}
+}
+
+.total {
+	text-align: center;
+}

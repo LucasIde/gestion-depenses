@@ -8,5 +8,29 @@
     <script src="./scripts/main.js" defer></script>
 </head>
 <body>
+    <h1>💰 Gestion des dépenses 💰</h1>
+    <form action="">
+        <div class="form-content">
+            <span>Description :</span>
+            <input type="text" placeholder="Description de la dépense" class="description">
+        </div>
+        <div class="form-content">
+            <span>Montant :</span>
+            <input type="number" placeholder="Montant de la dépense" class="montant">
+        </div>
+        <div class="form-content">
+            <span>Catégorie :</span>
+            <select name="" id="catégorie">
+                <option value="">Choisissez la catégorie</option>
+                <option value="alimentation">Alimentation</option>
+                <option value="logement">Logement</option>
+                <option value="transport">Transport</option>
+                <option value="divertissement">Divertissement</option>
+            </select>
+        </div>
+        <div class="form-content"><button class="add">Ajouter</button></div>
+    </form>
+    <div class="résumer"></div>
+    <div class="total"></div>
 </body>
 </html>
